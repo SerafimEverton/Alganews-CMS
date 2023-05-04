@@ -1,20 +1,19 @@
 import styled from "styled-components";
-import {transparentize} from 'polished'
+import { transparentize } from "polished";
 
 export const Wraper = styled.label`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 56px;
 
-display: flex;
-gap: 16px;
-flex-direction: column;
-
-span.Label {
+  span.Label {
     font-size: 14px;
     font-weight: 500;
-    color: '#274060';
-}
+    color: "#274060";
+  }
 
-input {
-    box-sizing: border-box;
+  input {
     height: 28px;
     font-size: 18px;
     font-weight: 500;
@@ -24,11 +23,10 @@ input {
     outline: none;
 
     border-radius: 0;
-    border-bottom: 1px solid '#274060';
+    border-bottom: 1px solid "#274060";
 
     &::placeholder {
-        color: ${transparentize(0.5, '#274060')};
+      color: ${transparentize(0.5, "#274060")};
     }
-}
-
-`
+  }
+`;
