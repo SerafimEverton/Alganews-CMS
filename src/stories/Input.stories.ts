@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Button, { ButtonProps } from "../components/Button/Button";
+import Input, { InputProps } from "../components/Input/input";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof Button> = {
-  title: "Example/Button",
-  component: Button,
+const meta: Meta<typeof Input> = {
+  title: "Example/Input",
+  component: Input,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -17,36 +17,33 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof Input>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 
-export const Primary: Story = {
+export const WithPlaceholder: Story = {
   args: {
-    variant: "primary",
-    label: "Button",
+    placeholder: 'e.g.: Jon Doe'
   },
 };
 
-export const Danger: Story = {
+export const WithLabelAndWithPlaceholder: Story = {
   args: {
-    variant: "danger",
-    label: "Button",
+    label: "Name",
+    placeholder: 'e.g.: Jon Doe'
   },
 };
 
-export const Text: Story = {
+export const WithLabelAndContent: Story = {
   args: {
-    variant: "text",
-    label: "Button",
+    label: "Name",
+    value: 'Jon Doe'
   },
 };
 
-export const Disabled: Story = {
+export const WithContent: Story = {
   args: {
-    variant: "primary",
-    disabled: true,
-    label: "Button",
+    value: 'Jon Doe'
   },
 };

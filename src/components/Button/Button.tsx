@@ -1,14 +1,15 @@
-import React from 'react'
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react'
 import * as B from './Button.styles'
 
-export interface ButtonProps{
+export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>{
     variant: 'danger' | 'text' | 'primary'
     label: string
 
 }
 
-export default function Button({ label, variant }: ButtonProps){
-    return<B.Wraper variant={variant}>
+export default function Button ({ label, variant, ref, ...props }: ButtonProps){
+    return<B.Wraper { ...props }variant={variant} >
     { label }
     </B.Wraper>
 }
+<button></button>
