@@ -1,11 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Button, { ButtonProps } from "../components/Button/Button";
+import NoData from "../components/NoData/NoData";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof Button> = {
-  title: "Example/Button",
-  component: Button,
+const meta: Meta<typeof NoData> = {
+  title: "Example/NoData",
+  component: NoData,
+  argTypes: {
+//     onNoData: { action: 'NoData' },
+//     onCancel: { action: 'cancel' },
+  },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -17,36 +21,19 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>;
+type Story = StoryObj<typeof NoData>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    variant: "primary",
-    label: "Button",
+    
   },
 };
 
-export const Danger: Story = {
+export const FixedHeight: Story = {
   args: {
-    variant: "danger",
-    label: "Button",
-  },
-};
-
-export const Text: Story = {
-  args: {
-    variant: "text",
-    label: "Button",
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    variant: "primary",
-    disabled: true,
-    label: "Button",
+    height:240
   },
 };
