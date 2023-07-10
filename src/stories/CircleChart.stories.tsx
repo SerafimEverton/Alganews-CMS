@@ -1,14 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Confirm from "../components/Confirm/Confirm";
+import CircleChart from "../components/CircleChart/CircleChart";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const meta: Meta<typeof Confirm> = {
-  title: "Example/Confirm",
-  component: Confirm,
+const meta: Meta<typeof CircleChart> = {
+  title: "Example/CircleChart",
+  component: CircleChart,
   argTypes: {
-    onConfirm: { action: 'confirm' },
-    onCancel: { action: 'cancel' },
+    progress:{
+      control: {
+        type: 'range',
+        min: 0,
+        max: 100
+      }
+    }
+    // onCircleChart: { action: 'CircleChart' },
+    // onCancel: { action: 'cancel' },
   },
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ["autodocs"],
@@ -21,13 +28,14 @@ const meta: Meta<typeof Confirm> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Confirm>;
+type Story = StoryObj<typeof CircleChart>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 
 export const Default: Story = {
   args: {
-    title: "Você tem certeza?"
+    progress: 80,
+    size: 150   
   },
 };
