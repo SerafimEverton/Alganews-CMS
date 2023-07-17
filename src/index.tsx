@@ -31,7 +31,7 @@ root.render(
        
     </Switch>   
     </BrowserRouter>
-    </div> 
+
   </React.StrictMode>
 );
 
