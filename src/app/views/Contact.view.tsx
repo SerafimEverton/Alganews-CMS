@@ -1,4 +1,4 @@
-import usePageTitle from "../Hooks/usePageTitle"
+import usePageTitle from "../../Core/Hooks/usePageTitle"
 
 export default function Contact() {
 

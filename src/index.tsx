@@ -1,25 +1,23 @@
-import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import './Core/imports.css'
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import NotFound404 from './views/NotFound404.view';
-import Contact from './views/Contact.view';
-import Home from './views/Home.view';
-import UserView from './views/User.view';
-import NavBar from './components/NavBar';
+import NotFound404 from './app/views/NotFound404.view';
+import Contact from './app/views/Contact.view';
+import Home from './app/views/Home.view';
+import UserView from './app/views/User.view';
+import React from 'react';
+import GlobalStylesCore from './Core/GlobalStyles.core';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <div>
-      <NavBar />
-    <BrowserRouter>
-    <Switch>
-      <Route path={'/home'} exact Component={Home} />
+
+      <BrowserRouter>
+        <Switch>
+          {/* <Route path={'/home'} exact Component={Home} />
       
       <Route path={'/usuario:userId'} exact Component={UserView} />
 
@@ -27,10 +25,11 @@ root.render(
 
       <Route path={'/contact'} exact Component={Contact} />
       
-      <Route Component={NotFound404} />
-       
-    </Switch>   
-    </BrowserRouter>
+      <Route Component={NotFound404} /> */}
+
+        </Switch>
+      </BrowserRouter>
+      <GlobalStylesCore />
 
   </React.StrictMode>
 );
