@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import WordPriceCounter from "../components/WordPriceCounter/WordPriceCounter";
+import WordPriceCounter from "../app/components/WordPriceCounter/WordPriceCounter";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof WordPriceCounter> = {

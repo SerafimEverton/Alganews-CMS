@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export default function NavBar() {
 
     return <nav>
         <List>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/contato">Contato</Link></li>
+            <Item><NavLink end to="/">Home</NavLink></Item>
+            <Item><NavLink end to="/contato">Contato</NavLink></Item>
         </List>
     </nav>
 }
@@ -29,6 +29,9 @@ a {
     text-decoration: none;
     color: #274060;
 
+    &.active {
+        color: #09f;
+    }
 }
 
 `

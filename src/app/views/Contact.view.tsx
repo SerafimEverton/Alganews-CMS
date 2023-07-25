@@ -1,11 +1,12 @@
 import usePageTitle from "../../Core/Hooks/usePageTitle"
+import DefaultLayout from "../../Layout/Default/Default.layout"
 
 export default function Contact() {
 
   usePageTitle('Contact')
   
-    return <div>
+    return <DefaultLayout>
     <h1>Contact</h1>
-    </div>
+    </DefaultLayout>
   }
   

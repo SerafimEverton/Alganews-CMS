@@ -1,37 +1,31 @@
-import ReactDOM from 'react-dom/client';
-import './Core/imports.css'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './Core/imports.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Home from './app/views/Home.view';
 import NotFound404 from './app/views/NotFound404.view';
 import Contact from './app/views/Contact.view';
-import Home from './app/views/Home.view';
 import UserView from './app/views/User.view';
-import React from 'react';
-import GlobalStylesCore from './Core/GlobalStyles.core';
+import CalcView from './app/views/Calc.view';
+import NavBar from './app/components/NavBar';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-
+    <div>
       <BrowserRouter>
-        <Switch>
-          {/* <Route path={'/home'} exact Component={Home} />
-      
-      <Route path={'/usuario:userId'} exact Component={UserView} />
-
-      <Route path={'/calc/:a/:b'} Component={CalcView} />
-
-      <Route path={'/contact'} exact Component={Contact} />
-      
-      <Route Component={NotFound404} /> */}
-
-        </Switch>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contato" element={<Contact />} />
+          <Route path={'/usuario/:userId'} element={<UserView />} />
+          <Route path={'/sum/:a/:b'} element={<CalcView />} />
+          <Route path="*" element={<NotFound404 />} />     
+        </Routes>
       </BrowserRouter>
-      <GlobalStylesCore />
-
-  </React.StrictMode>
+    </div>
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

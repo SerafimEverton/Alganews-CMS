@@ -3,7 +3,7 @@ import Icon from '@mdi/react';
 import { Meta } from '@storybook/react';
 import { useMemo } from 'react';
 import { Column, useTable } from 'react-table';
-import Table from '../components/Table/Table';
+import Table from '../app/components/Table/Table';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Table> = {

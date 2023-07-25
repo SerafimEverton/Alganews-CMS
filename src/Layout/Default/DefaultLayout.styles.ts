@@ -39,7 +39,6 @@ justify-content: flex-end;
 export const Aside = styled.aside`
 
 
-
 `
 
 export const  FeaturedContent = styled.section`
@@ -47,5 +46,8 @@ export const  FeaturedContent = styled.section`
 display: flex;
 flex-direction: column;
 gap: 32px;
+
+justify-content: center;
+align-items: center;
 
 `
