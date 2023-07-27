@@ -6,7 +6,7 @@ export const Wraper = styled.label`
   justify-content: space-between;
   flex-direction: column;
   height: 56px;
-
+  
   span.Label {
     font-size: 14px;
     font-weight: 500;
@@ -24,6 +24,9 @@ export const Wraper = styled.label`
 
     border-radius: 0;
     border-bottom: 1px solid "#274060";
+
+    background-color: transparent;
+
 
     &::placeholder {
       color: ${transparentize(0.5, "#274060")};

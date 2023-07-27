@@ -1,4 +1,5 @@
 import Logo from '../../app/components/Logo'
+import NavBar from '../../app/components/NavBar'
 import SessionController from '../../app/components/SessionController/SessionController'
 import * as DL from './DefaultLayout.styles'
 
@@ -14,18 +15,15 @@ return <DL.Wrapper style={{ color: 'red'}}>
 </DL.Header>
 <DL.Main>
     <DL.Navigation>
-        Navigation
+        <NavBar />
     </DL.Navigation>
     <DL.FeaturedContent>
-        Section
+        {props.children}
     </DL.FeaturedContent>
     <DL.Aside>
         <SessionController name='Everton' description='Iniciando na Programação' />
     </DL.Aside>
 </DL.Main>
-
-    todo: Layout
-    {props.children}
 </DL.Wrapper>
 }
 
