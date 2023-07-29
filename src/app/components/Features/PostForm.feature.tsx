@@ -8,31 +8,42 @@ import { Tag } from "react-tag-input"
 import WordPriceCounter from "../WordPriceCounter/WordPriceCounter"
 import Button from "../Button/Button"
 import countWordsInMarkdown from "../../../Core/Utils/CountWordsInMarkdown"
+import Info from "../Info/info"
 
 export default function PostForm(){
 
 const [tags, setTags] = useState<Tag[]>([]);
 const [body, setBody] = useState('')
 
-    return <PostFormWrapper>
-        <Input 
-        label="título"
-        placeholder="Como fiquei rico aprendendo React"
-        />
-        <ImageUpLoad label="Thumbenail do Post"/>
-        <MarkdownEditor onChange={setBody} />
-        <TagInput
-        tags={tags}
-        onAdd={tag => setTags([...tags, tag])}
-        onDelete={index => setTags(tags.filter((_, i) => i !== index))}
-        placehoder="Insira as tags deste post"
-        />
-        <PostFormSubmitWrapper>
-        <WordPriceCounter pricePerWord={0.25} 
-        wordCount={countWordsInMarkdown(body)}/>
-        <Button variant="primary" label="Salvar Post" type="submit"/>
-        </PostFormSubmitWrapper>
-    </PostFormWrapper>
+function handleFormSubmit (e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    Info({
+      title: 'Post salvo com sucesso',
+      description: 'Você acabou de salvar o post'
+    })
+  }
+
+  return <PostFormWrapper onSubmit={handleFormSubmit}>
+    <Input
+      label="título"
+      placeholder="e.g.: Como fiquei rico aprendendo React"
+    />
+    <ImageUpLoad label="Thumbnail do post" />
+    <MarkdownEditor onChange={setBody} />
+    <TagInput
+      tags={tags}
+      onAdd={tag => setTags([...tags, tag])}
+      onDelete={index => setTags(tags.filter((_, i) => i !== index))}
+      placehoder="Insira as tags deste post"
+    />
+    <PostFormSubmitWrapper>
+      <WordPriceCounter
+        pricePerWord={0.10}
+        wordCount={countWordsInMarkdown(body)}
+      />
+      <Button variant="primary" label="Salvar post" type="submit" />
+    </PostFormSubmitWrapper>
+  </PostFormWrapper>
 }
 
 export const PostFormWrapper = styled.form`
@@ -42,7 +53,7 @@ flex-direction: column;
 gap: 24px;
 
 `
-export const PostFormSubmitWrapper = styled.form`
+export const PostFormSubmitWrapper = styled.div`
 
 display: flex;
 justify-content: space-between;

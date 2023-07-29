@@ -28,7 +28,7 @@ return <DL.Wrapper style={{ color: 'red'}}>
         description='Iniciando na Programação' 
         onLogout={() => {
             confirm({
-                title: 'Você tem certeza que quer deslogar?'
+                title: 'Você quer deslogar?'
             })
         }}
         />
