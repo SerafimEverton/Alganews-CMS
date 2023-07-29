@@ -1,3 +1,5 @@
+import confirm from '../../Core/Utils/Confirm'
+import Confirm from '../../app/components/Confirm/Confirm'
 import Logo from '../../app/components/Logo'
 import NavBar from '../../app/components/NavBar'
 import SessionController from '../../app/components/SessionController/SessionController'
@@ -21,7 +23,15 @@ return <DL.Wrapper style={{ color: 'red'}}>
         {props.children}
     </DL.FeaturedContent>
     <DL.Aside>
-        <SessionController name='Everton' description='Iniciando na Programação' />
+        <SessionController 
+        name='Everton' 
+        description='Iniciando na Programação' 
+        onLogout={() => {
+            confirm({
+                title: 'Você tem certeza que quer deslogar?'
+            })
+        }}
+        />
     </DL.Aside>
 </DL.Main>
 </DL.Wrapper>
