@@ -8,7 +8,7 @@ import { Tag } from "react-tag-input"
 import WordPriceCounter from "../WordPriceCounter/WordPriceCounter"
 import Button from "../Button/Button"
 import countWordsInMarkdown from "../../../Core/Utils/CountWordsInMarkdown"
-import Info from "../Info/info"
+import info from "../../../Core/Utils/Info"
 
 export default function PostForm(){
 
@@ -17,7 +17,8 @@ const [body, setBody] = useState('')
 
 function handleFormSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    Info({
+    console.log('oi')
+    info({
       title: 'Post salvo com sucesso',
       description: 'Você acabou de salvar o post'
     })
