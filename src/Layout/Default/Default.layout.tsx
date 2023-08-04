@@ -1,5 +1,5 @@
 import confirm from '../../Core/Utils/Confirm'
-import Confirm from '../../app/components/Confirm/Confirm'
+import info from '../../Core/Utils/Info'
 import Logo from '../../app/components/Logo'
 import NavBar from '../../app/components/NavBar'
 import SessionController from '../../app/components/SessionController/SessionController'
@@ -28,7 +28,14 @@ return <DL.Wrapper style={{ color: 'red'}}>
         description='Iniciando na Programação' 
         onLogout={() => {
             confirm({
-                title: 'Você quer deslogar?'
+                title: 'Você quer deslogar?',
+                onConfirm: () => {
+                    info({
+                      title: 'Você foi deslogado',
+                      description: 'Você será redirecionado para a página de login'
+                    })
+                },
+                onCancel: ()=> window.alert('Redirecionado')
             })
         }}
         />

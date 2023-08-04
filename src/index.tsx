@@ -7,6 +7,7 @@ import Home from './app/views/Home.view';
 import NotFound404 from './app/views/NotFound404.view';
 import EditorListView from './app/views/EditorList.view';
 import PostCreateView from './app/views/PostCreate.view';
+import EditorProfileView from './app/views/EditorProfile.view';
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
@@ -18,6 +19,7 @@ root.render(
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/editores" element={<EditorListView />} />
+          <Route path="/editores/:id" element={<EditorProfileView />} />
           <Route path="/postform" element={<PostCreateView />} />
           <Route path="*" element={<NotFound404 />} />     
         </Routes>

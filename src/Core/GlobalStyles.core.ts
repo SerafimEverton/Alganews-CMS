@@ -16,7 +16,7 @@ body {
     background-color: ${transparentize(0.2, '#274060')};
 }
 
-.Info-overlay {
+.info-overlay {
     background-color: ${transparentize(0.2, '#F3F8FA')};
 }
 
