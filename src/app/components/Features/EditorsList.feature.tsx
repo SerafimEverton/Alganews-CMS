@@ -1,4 +1,4 @@
-import styled from "styled-components";
+git statusimport styled from "styled-components";
 import Profile from "../Profile/Profile";
 
 export default function EditorsList(){
