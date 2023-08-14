@@ -1,11 +1,13 @@
 import Service from "../../Service";
+import generateQueryString from "../../UtilSDK/GenerateQueryString";
 import { Post } from "../Post";
 
 class PostService extends Service {
 
-    static getAllPosts(){
+    static getAllPosts(search: Post.Query){
+        const queryString = generateQueryString(search)
         return this.Http
-        .get<Post.Paginated>('/posts')
+        .get<Post.Paginated>('/posts'.concat(queryString))
         .then(this.getData)
     }
 

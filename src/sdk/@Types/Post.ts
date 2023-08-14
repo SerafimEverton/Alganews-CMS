@@ -1,3 +1,4 @@
+import { number } from "prop-types";
 import { AlgaNews } from "./AlgaNews";
 
 export namespace Post {
@@ -6,4 +7,13 @@ export namespace Post {
   export type Summary = AlgaNews.components['schemas']['PostSummary']
   export type Paginated = AlgaNews.components['schemas']['PostsPaginated']
   export type WithEarnings = AlgaNews.components['schemas']['PostWithEarnings']
+
+export type Query = {
+  editorId?: number
+  page?: number
+  size?: number
+  showAll?: boolean
+  sort?: [keyof Summary, 'asc'|'desc']
+}
+
 }
