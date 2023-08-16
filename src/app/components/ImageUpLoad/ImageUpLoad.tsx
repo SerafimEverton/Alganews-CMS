@@ -3,6 +3,7 @@ import Icon from '@mdi/react'
 import { ChangeEvent, useState } from 'react'
 import Button from '../Button/Button'
 import * as IU from './ImageUpLoad.styles'
+import FileService from '../../../sdk/Services/File.service'
 
 export interface ImageUpLoadProps{
 
@@ -19,8 +20,12 @@ function ImageUpLoad (props: ImageUpLoadProps) {
       if (file) {
         const reader = new FileReader()
   
-        reader.addEventListener('load', e => {
+        reader.addEventListener('load', async e => {
           setFilePreview(String(e.target?.result));
+
+          const imageUrl = await FileService.upload(file)
+          console.log(imageUrl)
+
         })
   
         reader.readAsDataURL(file)

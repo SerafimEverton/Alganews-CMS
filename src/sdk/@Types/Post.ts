@@ -1,4 +1,3 @@
-import { number } from "prop-types";
 import { AlgaNews } from "./AlgaNews";
 
 export namespace Post {

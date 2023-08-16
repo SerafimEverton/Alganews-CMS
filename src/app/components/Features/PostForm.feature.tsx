@@ -9,7 +9,7 @@ import WordPriceCounter from "../WordPriceCounter/WordPriceCounter"
 import Button from "../Button/Button"
 import countWordsInMarkdown from "../../../Core/Utils/CountWordsInMarkdown"
 import info from "../../../Core/Utils/Info"
-import PostService from "../../../sdk/@Types/Services/Post.service"
+import PostService from "../../../sdk/Services/Post.service"
 
 export default function PostForm(){
 

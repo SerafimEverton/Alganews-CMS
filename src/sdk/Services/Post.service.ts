@@ -1,6 +1,6 @@
-import Service from "../../Service";
-import generateQueryString from "../../UtilSDK/GenerateQueryString";
-import { Post } from "../Post";
+import Service from "../Service";
+import generateQueryString from "../UtilSDK/GenerateQueryString";
+import { Post } from "../@Types/Post";
 
 class PostService extends Service {
 
