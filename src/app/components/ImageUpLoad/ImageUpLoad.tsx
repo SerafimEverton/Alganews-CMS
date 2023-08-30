@@ -4,6 +4,7 @@ import { ChangeEvent, useState } from 'react'
 import Button from '../Button/Button'
 import * as IU from './ImageUpLoad.styles'
 import FileService from '../../../sdk/Services/File.service'
+import { uuid } from "uuidv4";
 
 export interface ImageUpLoadProps{
 
@@ -23,9 +24,7 @@ function ImageUpLoad (props: ImageUpLoadProps) {
         reader.addEventListener('load', async e => {
           setFilePreview(String(e.target?.result));
 
-          const imageUrl = await FileService.upload(file)
-          console.log(imageUrl)
-
+          await FileService.upload(file)
         })
   
         reader.readAsDataURL(file)
