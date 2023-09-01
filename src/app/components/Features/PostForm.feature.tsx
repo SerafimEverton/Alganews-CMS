@@ -17,6 +17,7 @@ const [tags, setTags] = useState<Tag[]>([]);
 const [body, setBody] = useState('');
 
 const [title, setTitle] = useState('')
+const [imageUrl, setImageUrl] = useState('')
 
 async function handleFormSubmit (e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -25,7 +26,7 @@ async function handleFormSubmit (e: React.FormEvent<HTMLFormElement>) {
       body,
       title,
       tags: tags.map(tag => tag.text),
-      imageUrl: ''
+      imageUrl,
     }
 
     const insertPost = await PostService.insertNewPost(newPost)
@@ -43,7 +44,9 @@ async function handleFormSubmit (e: React.FormEvent<HTMLFormElement>) {
       onChange={e => setTitle(e.target.value)}
       placeholder="e.g.: Como fiquei rico aprendendo React"
     />
-    <ImageUpLoad label="Thumbnail do post" />
+    <ImageUpLoad 
+    onImageUpload={setImageUrl} 
+    label="Thumbnail do post" />
     <MarkdownEditor onChange={setBody} />
     <TagInput
       tags={tags}
