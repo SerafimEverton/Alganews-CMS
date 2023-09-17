@@ -29,7 +29,7 @@ type Story = StoryObj<typeof TagInput>;
 export const Default: Story = {
   args: {
 
-    placehoder: 'Insira as Tags deste Post',
+    placeholder: 'Insira as Tags deste Post',
     tags: [{ id: '1', text: 'JavaScript'}]
    
   },
@@ -37,7 +37,7 @@ export const Default: Story = {
 export const VariousTags: Story = {
   args: {
 
-    placehoder: 'Insira as Tags deste Post',
+    placeholder: 'Insira as Tags deste Post',
     tags: [
         { id: '1', text: 'JavaScript'},
         { id: '2', text: 'Java'},

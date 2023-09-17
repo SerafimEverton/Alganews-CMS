@@ -1,7 +1,7 @@
 function generateQueryString(
 
     params: {
-        [key: string]: string|number | string[] |boolean | undefined}
+        [key: string]: string | number | string[] | boolean | undefined}
 
 ): string {
 
@@ -17,8 +17,7 @@ function generateQueryString(
 
     const urlParams = new URLSearchParams(convertedParams)
 
-    return `?${urlParams.toString()
-    }`
+    return `?${urlParams.toString()}`
 }
 
 export default generateQueryString

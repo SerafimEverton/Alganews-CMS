@@ -2,11 +2,11 @@ import * as TI from './TagInput.styles'
 import { WithContext as ReactTagInput, Tag } from 'react-tag-input'
 
 export interface TagInputProps{
-
     onAdd: (Tag: Tag)=> any
     onDelete: (i: number)=> any
     tags: Tag[]
-    placehoder: string
+    placeholder: string
+    name: string
 
 }
 
@@ -19,7 +19,8 @@ const KeyCodes = {
 function TagInput( props: TagInputProps ){
 return <TI.Wrapper>
     <ReactTagInput
-    placeholder={props.placehoder} 
+    name={props.name}
+    placeholder={props.placeholder} 
     handleAddition={props.onAdd}
     handleDelete={props.onDelete}  
     allowDragDrop={false}  

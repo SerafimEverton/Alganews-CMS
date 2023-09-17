@@ -1,6 +1,6 @@
 import { File } from "../@Types";
 import Service from "../Service";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from 'uuid'
 
 class FileService extends Service {
     private static getSignedUrl(fileInfo: File.UploadRequestInput) {
@@ -23,20 +23,21 @@ class FileService extends Service {
     return extension
   }
 
-  private static generateFileName(extension: string) {
-    return `${uuid()}.${extension}`;
+  private static generateFileName(eXtension: string) {
+    const uuid = uuidv4(); // Chame uuidv4() corretamente.
+    return `${uuid}.${eXtension}`
   }
 
     static async upload(file: File) {
-    const extension = this.getFileExtension(file.name);
-    const fileName = this.generateFileName(extension);
-
-    const singedUrl = await FileService
-    .getSignedUrl({fileName, contentLength: file.size});
-
+    const extensioN = this.getFileExtension(file.name);
+    const fileName = this.generateFileName(extensioN);
+    
+    const singedUrl = await FileService.getSignedUrl({fileName, contentLength: file.size});
+    
     await FileService.uploadFileToSignedUrl(singedUrl, file);
-
+    
     return singedUrl.split("?")[0];
+   
   }
 }
 

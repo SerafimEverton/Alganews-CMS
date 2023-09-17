@@ -1,4 +1,4 @@
-import { ImageUpLoadProps } from './ImageUpLoad'
+import { ImageUploadProps } from './ImageUpLoad'
 export { default } from './ImageUpLoad'
 
-export type { ImageUpLoadProps }
+export type { ImageUploadProps }
