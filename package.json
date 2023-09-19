@@ -14,6 +14,7 @@
     "@types/react-dom": "^18.0.0",
     "axios": "^1.4.0",
     "chart.js": "2.9.4",
+    "date-fns": "^2.30.0",
     "markdown-it": "^13.0.1",
     "polished": "^4.2.2",
     "react": "^18.2.0",

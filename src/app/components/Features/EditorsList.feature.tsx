@@ -3,6 +3,7 @@ import Profile from "../Profile/Profile";
 import { useEffect, useState } from "react";
 import { User } from "../../../sdk/@Types";
 import UserService from "../../../sdk/Services/User.service";
+import getEditorDescription from "../../../sdk/UtilSDK/getEditorDescription";
 
 export default function EditorsList(){
 
@@ -21,7 +22,8 @@ useEffect(()=> {
             key={editor.id}
             editorId = {editor.id}
             name= {editor.name}
-            description="Developer a 4 anos"
+            description={getEditorDescription(new Date(editor.createdAt))}
+            avatarUrl={editor.avatarUrls.small}
 
             />
            }) 
