@@ -15,7 +15,7 @@ MetricService
 .getTop3Tags()
 .then(setTopTags)
 
-})
+}, [])
 
     return <UserTopTagsWrapper>
         {

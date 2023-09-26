@@ -10,7 +10,7 @@ const [user, setUser] = useState<User.UserDetaild>()
 
 useEffect(()=> {
 UserService
-.getDetailedUser(7)
+.getDetailedUser(9)
 .then(setUser)
 }, [])
 
