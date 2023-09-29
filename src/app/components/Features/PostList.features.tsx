@@ -1,70 +1,37 @@
 import { mdiOpenInNew } from "@mdi/js"
 import Icon from "@mdi/react"
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Column, useTable } from "react-table"
 import Table from "../Table/Table"
+import { Post } from "../../../sdk/@Types"
+import PostService from "../../../sdk/Services/Post.service"
+import { format } from "date-fns"
+import withBoundary from "../../../Core/HOC/withBoundary"
 
-type Post = {
-  id: number
-  title: string
-  views: number
-  author: {
-    name: string
-    avatar: string
-  }
-  conversions: {
-    thoushands: number
-    percentage: number
-  }
+function PostList () {
+
+const [posts, setPosts] = useState<Post.Paginated>()
+const [error, setError] = useState<Error>()
+
+useEffect(()=>{
+PostService
+.getAllPosts({
+  page: 0,
+  size: 7,
+  showAll: true,
+  sort: ['createdAt', 'desc']
+})
+.then(setPosts)
+.catch(error => {
+  setError(new Error(error.message))
+})
+}, [])
+
+if(error){
+  throw error
 }
 
-export default function PostList () {
-  const data = useMemo<Post[]>(
-    () => [
-      {
-        author: {
-          name: 'Daniel Bonifacio',
-          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNf0vAZLggJoZxGKpfOa3EBClHkwQmmvv9Lg&usqp=CAU'
-        },
-        id: 1,
-        conversions: {
-          percentage: 64.35,
-          thoushands: 607,
-        },
-        title: 'Como dobrei meu salário aprendendo somente React',
-        views: 985415
-      },
-      {
-        author: {
-          name: 'Daniel Bonifacio',
-          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNf0vAZLggJoZxGKpfOa3EBClHkwQmmvv9Lg&usqp=CAU'
-        },
-        id: 2,
-        conversions: {
-          percentage: 64.35,
-          thoushands: 607,
-        },
-        title: 'React.js vs. React Native: a REAL diferença entre os dois',
-        views: 985415
-      },
-      {
-        author: {
-          name: 'Daniel Bonifacio',
-          avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNf0vAZLggJoZxGKpfOa3EBClHkwQmmvv9Lg&usqp=CAU'
-        },
-        id: 3,
-        conversions: {
-          percentage: 95.35,
-          thoushands: 845,
-        },
-        title: 'Como dobrei meu salário aprendendo somente React',
-        views: 985415
-      }
-    ],
-    []
-  )
-
-  const columns = useMemo<Column<Post>[]>(
+  const columns = useMemo<Column<Post.Summary>[]>(
     () => [
       {
         Header: '',
@@ -72,41 +39,58 @@ export default function PostList () {
         Cell: () => <Icon path={mdiOpenInNew} size={'14px'} color={'#09f'} />
       },
       {
-        Header: () => <div style={{ textAlign: 'left' }}>Artigo</div>,
+        Header: () => <div style={{ textAlign: 'left' }}>Título</div>,
         accessor: 'title',
         width: 320,
         Cell: (props) => <div style={{ textAlign: 'left', display: 'flex', gap: 8, alignItems: 'center' }}>
-          <img width={24} height={24} src={props.row.original.author.avatar} alt={props.row.original.author.name}/>
+          <img width={24} height={24} src={
+            props.row.original.editor.avatarUrls.small} 
+            alt={props.row.original.editor.name}
+            title = {props.row.original.editor.name}
+            />
           {props.value}
         </div>
       },
       {
-        Header: () => <div style={{ textAlign: 'right' }}>Views</div>,
-        accessor: 'views',
-        Cell: (props) => <div style={{ textAlign: 'right', fontWeight: 700, fontFamily: '"Roboto mono", monospace' }}>{props.value.toLocaleString('pt-br')}</div>
+        Header: () => <div style={{ textAlign: 'right' }}>Criação</div>,
+        accessor: 'createdAt',
+        Cell: (props) => <div
+        style={{ 
+          textAlign: 'right', 
+          fontFamily: '"Roboto mono", monospace' }}>
+            { format(new Date(props.value), 'dd/MM/yyyy - kk:mm')}
+        </div>
       },
       {
-        Header: () => <div style={{ textAlign: 'left' }}>Conversões</div>,
-        accessor: 'conversions',
-        Cell: (props) => <div style={{ display: 'flex', gap: 8, fontWeight: 700, fontFamily: '"Roboto mono", monospace' }}>
-          <span>{props.value.thoushands}k</span>
-          <span style={{ color: '#09f' }}>{props.value.percentage}%</span>
+        Header: () => <div style={{ textAlign: 'right' }}>Ultima atualização</div>,
+        accessor: 'updatedAt',
+        Cell: (props) => <div
+        style={{ 
+          textAlign: 'right', 
+          fontFamily: '"Roboto mono", monospace' }}>
+            { format(new Date(props.value), 'dd/MM/yyyy - kk:mm')}
         </div>
       },
       {
         id: Math.random().toString(),
+        accessor: 'published',
         Header: () => <div style={{ textAlign: 'right' }}>Ações</div>,
-        Cell: () => <div style={{ textAlign: 'right' }}>
-          todo: actions
+        Cell: (props) => <div style={{ textAlign: 'right' }}>
+          {
+            props.value ? 'Publicado' : 'Privado'
+          }          
         </div>
       },
     ],
     []
   )
 
-  const instance = useTable<Post>({ data, columns })
+  const instance = useTable<Post.Summary>({
+     data: posts?.content || [], columns })
 
   return <Table
     instance={instance}
   />
 }
+
+export default withBoundary(PostList, 'Lista de Posts')

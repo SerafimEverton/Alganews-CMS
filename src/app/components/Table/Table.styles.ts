@@ -22,7 +22,7 @@ export const HeadingCell = styled.th`
   padding: 0 8px;
 `;
 
-export const Body = styled.body``;
+export const Bodyy = styled.body``;
 
 export const BodyRow = styled.tr``;
 

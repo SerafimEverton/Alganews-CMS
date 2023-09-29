@@ -1,5 +1,6 @@
 import usePageTitle from "../../Core/Hooks/usePageTitle"
 import DefaultLayout from "../../Layout/Default/Default.layout"
+import ErrorBoundary from "../components/ErrorBoundary"
 import PostList from "../components/Features/PostList.features"
 import UserEarnings from "../components/Features/UserEarnings.feature"
 import UserPerformance from "../components/Features/UserPerformance.features"
@@ -14,10 +15,11 @@ export default function Home () {
       alignItems: 'center', 
       gap: '32px' }}>
         
+    
       <UserTopTags />
       <UserEarnings />
-    </div>
-    <UserPerformance />
+    </div>    
+    <UserPerformance />    
     <PostList />
   </DefaultLayout>
 }

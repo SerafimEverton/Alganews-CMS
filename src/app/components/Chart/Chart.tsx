@@ -35,15 +35,6 @@ const options: Chart.ChartOptions = {
         position: 'left',
         id: 'cashflow',
       },
-      // {
-      //   type: 'linear',
-      //   display: true,
-      //   position: 'right',
-      //   id: 'y-axis-2',
-      //   gridLines: {
-      //     display: false,
-      //   },
-      // },
     ],
   },
 };

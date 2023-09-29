@@ -3,16 +3,26 @@ import ValueDescriptor from "../ValueDescriptor/ValueDescriptor";
 import { useState, useEffect } from 'react'
 import { User } from "../../../sdk/@Types";
 import UserService from "../../../sdk/Services/User.service";
+import withBoundary from "../../../Core/HOC/withBoundary";
 
-export default function UserEarnings(){
+function UserEarnings(){
 
 const [user, setUser] = useState<User.UserDetaild>()
+const [error, setError] = useState<Error>()
 
 useEffect(()=> {
 UserService
-.getDetailedUser(9)
+.getDetailedUser(5)
 .then(setUser)
-}, [])
+.catch(error => {
+    setError(new Error(error.message))
+  })
+  
+  }, [])
+  
+  if(error){
+    throw error
+  }
 
 if(!user)
 return null
@@ -31,3 +41,5 @@ grid-template-columns: repeat(2, 1fr);
 gap: 16px;
 
 `
+
+export default withBoundary(UserEarnings, 'Rendimentos')

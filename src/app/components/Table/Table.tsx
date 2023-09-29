@@ -30,22 +30,22 @@ export default function Table<T extends Object>({ instance }: { instance: TableI
             ))
           }
         </T.Heading>
-        <T.Body {...getTableBodyProps()}>
+        <tbody {...getTableBodyProps()}>
           {
             rows.map(row => {
               prepareRow(row)
-              return <T.BodyRow {...row.getRowProps()}>
+              return <tr {...row.getRowProps()}>
                 {
                   row.cells.map(cell => {
-                    return <T.BodyCell {...cell.getCellProps()}>
+                    return <td {...cell.getCellProps()}>
                       {cell.render('Cell')}
-                    </T.BodyCell>
+                    </td>
                   })
                 }
-              </T.BodyRow>
+              </tr>
             })
           }
-        </T.Body>
+        </tbody>
       </T.Wrapper>
 
       {
