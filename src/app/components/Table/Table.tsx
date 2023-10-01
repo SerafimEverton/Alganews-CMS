@@ -15,21 +15,21 @@ export default function Table<T extends Object>({ instance }: { instance: TableI
   return (
     <>
       <T.Wrapper cellPadding={0} cellSpacing={0} {...getTableProps()}>
-        <T.Heading>
+        <thead>
           {
             headerGroups.map(headerGroup => (
-              <T.HeadingRow {...headerGroup.getHeaderGroupProps()}>
+              <tr {...headerGroup.getHeaderGroupProps()}>
                 {
                   headerGroup.headers.map(column => (
-                    <T.HeadingCell {...column.getHeaderProps()}>
+                    <th {...column.getHeaderProps()}>
                       {column.render('Header')}
-                    </T.HeadingCell>
+                    </th>
                   ))
                 }
-              </T.HeadingRow>
+              </tr>
             ))
           }
-        </T.Heading>
+        </thead>
         <tbody {...getTableBodyProps()}>
           {
             rows.map(row => {

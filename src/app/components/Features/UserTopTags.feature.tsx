@@ -4,15 +4,15 @@ import { Metric } from "../../../sdk/@Types";
 import { useState, useEffect } from 'react'
 import MetricService from "../../../sdk/Services/Metric.service";
 import withBoundary from "../../../Core/HOC/withBoundary";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function UserTopTags(){
 
 const [topTags, setTopTags] = useState<Metric.EditorTagRatio>([])
 const [error, setError] = useState<Error>()
 
-useEffect(()=> {
-
-MetricService
+useEffect(()=> {MetricService
 .getTop3Tags()
 .then(setTopTags)
 .catch(error => {
@@ -23,6 +23,14 @@ MetricService
   
   if(error){
     throw error
+  }
+
+  if(!topTags.length){
+    return <UserTopTagsWrapper>
+      <Skeleton height={88} width={88} circle />
+      <Skeleton height={88} width={88} circle />
+      <Skeleton height={88} width={88} circle />
+    </UserTopTagsWrapper>
   }
 
     return <UserTopTagsWrapper>

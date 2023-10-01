@@ -3,6 +3,8 @@ import Chart, { ChartProps } from "../Chart/Chart"
 import MetricService from "../../../sdk/Services/Metric.service"
 import transformEditorMonthlyEarningsIntoChartJs from "../../../Core/Utils/TransformEditorMonthlyEarningsIntoChartJs"
 import withBoundary from "../../../Core/HOC/withBoundary"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function UserPerformance () {
 
@@ -26,7 +28,9 @@ if(error){
 }
 
 if(!editorEarnings){
-return null
+return <div>
+<Skeleton height={227}/>
+</div>
 }
 
   return <Chart

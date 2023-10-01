@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import UserService from "../../../sdk/Services/User.service";
 import getEditorDescription from "../../../sdk/UtilSDK/getEditorDescription";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 interface EditorProfileProps {
   hidePersonalData?: boolean;
@@ -25,8 +27,11 @@ function EditorProfile (props: EditorProfileProps) {
     
   }, [params.id])
   
-  if(!editor)
-  return null
+   if(!editor){
+    return <EditorProfileWrapper>
+    <Skeleton width={628} height={312}/>
+    </EditorProfileWrapper>
+    }
 
   return <EditorProfileWrapper>
     <EditorHeadline>

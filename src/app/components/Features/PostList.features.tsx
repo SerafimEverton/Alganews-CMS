@@ -7,6 +7,8 @@ import { Post } from "../../../sdk/@Types"
 import PostService from "../../../sdk/Services/Post.service"
 import { format } from "date-fns"
 import withBoundary from "../../../Core/HOC/withBoundary"
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function PostList () {
 
@@ -87,6 +89,19 @@ if(error){
 
   const instance = useTable<Post.Summary>({
      data: posts?.content || [], columns })
+
+     if(!posts){
+      return <div>
+        <Skeleton height={32}/>
+        <Skeleton height={40}/>
+        <Skeleton height={40}/>
+        <Skeleton height={40}/>
+        <Skeleton height={40}/>
+        <Skeleton height={40}/>
+        <Skeleton height={40}/>
+        <Skeleton height={40}/>
+        </div>
+     }
 
   return <Table
     instance={instance}
