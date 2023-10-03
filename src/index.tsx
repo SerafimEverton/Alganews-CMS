@@ -1,30 +1,16 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client'
 import './Core/imports.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
-import Home from './app/views/Home.view';
-import NotFound404 from './app/views/NotFound404.view';
-import EditorListView from './app/views/EditorList.view';
-import PostCreateView from './app/views/PostCreate.view';
-import EditorProfileView from './app/views/EditorProfile.view';
+import App from './app';
 
 const container = document.getElementById('root')!
 const root = createRoot(container)
 
 root.render(
   <StrictMode>
-      <BrowserRouter>
-        {/* <NavBar /> */}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/editores" element={<EditorListView />} />
-          <Route path="/editores/:id" element={<EditorProfileView />} />
-          <Route path="/postform" element={<PostCreateView />} />
-          <Route path="*" element={<NotFound404 />} />     
-        </Routes>
-      </BrowserRouter>
-  </StrictMode>,
+     <App />
+  </StrictMode>
  
 );
 

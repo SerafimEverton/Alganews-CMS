@@ -15,6 +15,8 @@ display: flex;
 justify-content: center;
 align-items: center;
 
+backdrop-filter: blur(3px);
+
 .lds-grid {
   display: inline-block;
   position: relative;
