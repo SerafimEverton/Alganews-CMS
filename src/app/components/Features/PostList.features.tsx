@@ -9,25 +9,33 @@ import { format } from "date-fns"
 import withBoundary from "../../../Core/HOC/withBoundary"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import Loading from "../Loading/Loading"
 
 function PostList () {
 
 const [posts, setPosts] = useState<Post.Paginated>()
 const [error, setError] = useState<Error>()
+const [page, setPage] = useState(0)
+const [loading, setLoading] = useState(false)
 
 useEffect(()=>{
+
+setLoading(true)
+
 PostService
 .getAllPosts({
-  page: 0,
+  page,
   size: 7,
   showAll: true,
   sort: ['createdAt', 'desc']
 })
 .then(setPosts)
-.catch(error => {
-  setError(new Error(error.message))
+.catch(error => 
+  setError(new Error(error.message)))
+.finally(()=> {
+  setLoading(false)
 })
-}, [])
+}, [page])
 
 if(error){
   throw error
@@ -111,9 +119,14 @@ if(error){
         </div>
      }
 
-  return <Table
+  return <>
+  
+  <Loading show = {loading}/>  
+  <Table
     instance={instance}
+    onPaginate={setPage}
   />
+  </>
 }
 
 export default withBoundary(PostList, 'Lista de Posts')

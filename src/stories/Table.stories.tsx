@@ -5,40 +5,15 @@ import { useMemo } from 'react';
 import { Column, useTable } from 'react-table';
 import Table from '../app/components/Table/Table';
 
+
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta: Meta<typeof Table> = {
   title: "Example/Table",
   component: Table,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ["autodocs"],
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  tags: ["autodocs"]};
 
-  //**************************************************************************//
-  // argTypes: {
-  //   backgroundColor: { control: 'color' },
-  // },
-};
-
-export default meta;
-// type Story = StoryObj<typeof Table>;
-
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-
-// export const Default: Story = {
-//   args: {
-    
-//   },
-// };
-
-// type Data = {
-//   preview: React.ReactNode
-//   col1: string
-//   col2: string
-//   actions: string
-// }
-
-type Post = {
+export default meta; type Post = {
   id: number
   title: string
   views: number
@@ -96,6 +71,7 @@ export function Default () {
       }
     ],
     []
+
   )
 
   const columns = useMemo<Column<Post>[]>(
@@ -140,7 +116,7 @@ export function Default () {
 
   const insntace = useTable<Post>({ data, columns })
 
-  return <Table<Post> instance={insntace} />
+  return <Table<Post> instance={insntace} onPaginate={} />
 }
 
 export function WithOutNoData () {
@@ -190,5 +166,5 @@ export function WithOutNoData () {
 
   const insntace = useTable<Post>({ data, columns })
 
-  return <Table<Post> instance={insntace} />
+  return <Table<Post> instance={insntace} onPaginate={} />
 }
