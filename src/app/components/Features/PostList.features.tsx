@@ -1,7 +1,7 @@
 import { mdiOpenInNew } from "@mdi/js"
 import Icon from "@mdi/react"
 import { useEffect, useMemo, useState } from "react"
-import { Column, useTable } from "react-table"
+import { Column, usePagination, useTable } from "react-table"
 import Table from "../Table/Table"
 import { Post } from "../../../sdk/@Types"
 import PostService from "../../../sdk/Services/Post.service"
@@ -88,7 +88,15 @@ if(error){
   )
 
   const instance = useTable<Post.Summary>({
-     data: posts?.content || [], columns })
+
+     data: posts?.content || [],
+      columns,
+      manualPagination: true,
+      initialState: {pageIndex: 0},
+      pageCount: posts?.totalPages 
+    },
+    usePagination
+    )
 
      if(!posts){
       return <div>
