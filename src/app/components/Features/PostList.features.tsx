@@ -10,6 +10,8 @@ import withBoundary from "../../../Core/HOC/withBoundary"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Loading from "../Loading/Loading"
+import modal from "../../../Core/Utils/modal"
+import PostPreview from "./PostPreview"
 
 function PostList () {
 
@@ -52,14 +54,27 @@ if(error){
         Header: () => <div style={{ textAlign: 'left' }}>Título</div>,
         accessor: 'title',
         width: 320,
-        Cell: (props) => <div style={{ textAlign: 'left', display: 'flex', gap: 8, alignItems: 'center' }}>
-          <img width={24} height={24} src={
-            props.row.original.editor.avatarUrls.small} 
-            alt={props.row.original.editor.name}
-            title = {props.row.original.editor.name}
+        Cell: (props) => (<div style={{ textAlign: 'left', display: 'flex', gap: 8, alignItems: 'center' }}>
+          <img
+              width={24}
+              height={24}
+              src={props.row.original.editor.avatarUrls.small}
+              alt={props.row.original.editor.name}
+              title={props.row.original.editor.name}
             />
-          {props.value}
-        </div>
+            <a
+              href={`/posts/${props.row.original.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                modal({
+                  children: <PostPreview postId={props.row.original.id} />,
+                });
+              }}
+            >
+              {props.value}
+            </a>
+          </div>
+        ),
       },
       {
         Header: () => <div style={{ textAlign: 'right' }}>Criação</div>,
