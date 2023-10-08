@@ -48,8 +48,8 @@ ul {
     a{
       text-align: center;
       cursor: pointer;
-      background-color: '#09f';
-      color: '#fff';
+      background-color:  #09f;
+      color: #fff;
       padding: 4px 8px;
       display: block;
 
@@ -62,8 +62,8 @@ ul {
     }
 
     &.selected a, &.disabled a {
-      background-color: '#ccc';
-      color: '#222';
+      background-color: #ccc;
+      color: #222;
       pointer-events: none;
     }
   }

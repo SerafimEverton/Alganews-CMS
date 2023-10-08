@@ -79,38 +79,10 @@ export default function Table<T extends Object>({
       }
       
     <T.TablePagination>
-      {/* <Button
-        variant={'primary'}
-        label={'Primeira página'}
-        onClick={() => gotoPage(0)}
-        disabled={!canPreviousPage}
-      />
-      <Button
-        variant={'primary'}
-        label={'Página anterior'}
-        onClick={previousPage}
-        disabled={!canPreviousPage}
-      />
-      <Button
-        variant={'primary'}
-        label={'Próxima página'}
-        onClick={nextPage}
-        disabled={!canNextPage}
-      />
-      <Button
-        variant={'primary'}
-        label={'Última página'}
-        onClick={() => gotoPage(pageCount - 1)}
-        disabled={!canNextPage}
-      />
-      <span>
-        Página {pageIndex + 1} de {pageOptions.length}
-      </span> */}
-
       <ReactPaginate 
       pageCount={pageCount}
       onPageChange={page => gotoPage(page.selected) }
-      marginPagesDisplayed={2}
+      marginPagesDisplayed={1}
       pageRangeDisplayed={4}
       nextLabel = {<Icon path={mdiChevronRight} size = {'16px'} />}
       previousLabel = {<Icon path={mdiChevronLeft} size = {'16px'} />}
