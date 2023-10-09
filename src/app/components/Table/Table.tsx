@@ -38,7 +38,7 @@ export default function Table<T extends Object>({
 
   return (
     <>
-      <T.Wrapper cellPadding={0} cellSpacing={0} {...getTableProps()}>
+      <T.Wrapper cellPadding={2} cellSpacing={2} {...getTableProps()}>
         <thead>
           {
             headerGroups.map(headerGroup => (

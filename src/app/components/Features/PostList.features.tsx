@@ -12,6 +12,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Loading from "../Loading/Loading"
 import modal from "../../../Core/Utils/modal"
 import PostPreview from "./PostPreview"
+import PostTitleAnchor from "../PostTitleAnchor"
 
 function PostList () {
 
@@ -54,7 +55,14 @@ if(error){
         Header: () => <div style={{ textAlign: 'left' }}>Título</div>,
         accessor: 'title',
         width: 320,
-        Cell: (props) => (<div style={{ textAlign: 'left', display: 'flex', gap: 8, alignItems: 'center' }}>
+        Cell: (props) => (<div style={{ 
+          textAlign: 'left', 
+          display: 'flex', 
+          gap: 12, 
+          alignItems: 'center',
+          maxWidth: 270
+          }}
+          >
           <img
               width={24}
               height={24}
@@ -62,9 +70,10 @@ if(error){
               alt={props.row.original.editor.name}
               title={props.row.original.editor.name}
             />
-            <a
+            <PostTitleAnchor
+              title = {props.value}
               href={`/posts/${props.row.original.id}`}
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault();
                 modal({
                   children: <PostPreview postId={props.row.original.id} />,
@@ -72,7 +81,7 @@ if(error){
               }}
             >
               {props.value}
-            </a>
+            </PostTitleAnchor>
           </div>
         ),
       },
@@ -93,10 +102,10 @@ if(error){
         style={{ 
           textAlign: 'right', 
           fontFamily: '"Roboto mono", monospace' }}>
-            { format(new Date(props.value), 'dd/MM/yyyy - kk:mm')}
+            {format(new Date(props.value), 'dd/MM/yyyy - kk:mm')}
         </div>
       },
-      {
+      { 
         id: Math.random().toString(),
         accessor: 'published',
         Header: () => <div style={{ textAlign: 'right' }}>Ações</div>,
