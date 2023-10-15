@@ -6,6 +6,7 @@ import EditorProfileView from './views/EditorProfile.view';
 import Home from "./views/Home.view";
 import { useEffect } from 'react'
 import info from "../Core/Utils/Info";
+import PostEditView from "./views/PostEdit.view";
 
 
 export default function App() {
@@ -26,7 +27,8 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/editores" element={<EditorListView />} />
             <Route path="/editores/:id" element={<EditorProfileView />} />
-            <Route path="/postform" element={<PostCreateView />} />
+            <Route path="/posts/criar" element={<PostCreateView />} />
+            <Route path="/posts/editar/:id" element={<PostEditView />} />
             <Route path="*" element={<NotFound404 />} />
         </Routes>
     </BrowserRouter>

@@ -11,8 +11,11 @@ import info from "../../../Core/Utils/Info"
 import PostService from "../../../sdk/Services/Post.service"
 import ImageUpLoad from "../ImageUpLoad"
 import Loading from "../Loading/Loading"
+import { useNavigate } from "react-router-dom"
+
 
 export default function PostForm () {
+  const historyNavigate = useNavigate()
   const [tags, setTags] = useState<Tag[]>([])
   const [body, setBody] = useState('')
   const [title, setTitle] = useState('')
@@ -38,6 +41,7 @@ export default function PostForm () {
       title: 'Post salvo com sucesso',
       description: 'Você acabou de criar o post com o id ' + insertedPost.id,
     })   
+    historyNavigate('/')
   
   }
 
@@ -77,7 +81,12 @@ export default function PostForm () {
         pricePerWord={0.10}
         wordCount={countWordsInMarkdown(body)}
       />
-      <Button variant="primary" label="Salvar post" type="submit" />
+      <Button 
+      variant="primary" 
+      label="Salvar post" 
+      type="submit" 
+      disabled = {!title || !imageUrl || !body || !tags.length}
+      />
     </PostFormSubmitWrapper>
   </PostFormWrapper>
 }

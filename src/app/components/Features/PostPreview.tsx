@@ -6,14 +6,35 @@ import { useEffect, useState } from "react"
 import { Post } from "../../../sdk/@Types"
 import PostService from "../../../sdk/Services/Post.service"
 import Loading from "../Loading/Loading"
+import info from "../../../Core/Utils/Info"
+import confirm from "../../../Core/Utils/Confirm"
+import modal from "../../../Core/Utils/modal"
 
 interface PostPreviewProps {
   postId: number
 }
 
 function PostPreview (props: PostPreviewProps) {
+
   const [post, setPost] = useState<Post.Detailed>()
   const [loading, setLoading] = useState(false)
+
+  async function publishPost(){
+    await PostService.publishExistingPost(props.postId)
+
+    info({
+      title: 'Post publicado',
+      description: 'Você publicou o post com sucesso'
+    })
+  }
+
+function reopenModal(){
+modal({
+  children: <PostPreview postId= {props.postId} />
+})
+}
+
+
 
   useEffect(() => {
 setLoading(true)
@@ -42,11 +63,20 @@ PostService
           variant={'danger'}
           label={'Publicar'}
           disabled = {post.published}
+          onClick={() => 
+            confirm({
+              title: 'Publicar o post?',
+              onConfirm: publishPost,
+              onCancel: reopenModal,
+            })
+          }
         />
         <Button
           variant={'primary'}
           label={'Editar'}
           disabled = {post.published}
+          onClick = {() => window.location.pathname = `/posts/editar/${props.postId}`
+        }
         />
       </PostPreviewActions>
     </PostPreviewHeading>

@@ -7,7 +7,7 @@ export default function NavBar() {
         <List>
             <Item><NavLink end to="/">Home</NavLink></Item>
             <Item><NavLink end to="/editores">Editores</NavLink></Item>
-            <Item><NavLink end to="/postform">Novo Post</NavLink></Item>
+            <Item><NavLink end to="/posts/criar">Novo Post</NavLink></Item>
         </List>
     </nav>
 }
