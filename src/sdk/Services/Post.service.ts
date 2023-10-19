@@ -30,6 +30,12 @@ return this.Http
         .then(this.getData)
     }
 
+    static updateExistingPost(postId: number, post: Post.Input){
+     return this.Http
+     .put<Post.Detailed>(`/posts/${postId}`, post)
+     .then(this.getData)   
+    }
+
 }
 
 export default PostService
