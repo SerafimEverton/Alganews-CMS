@@ -8,11 +8,9 @@ import { useEffect } from 'react'
 import info from "../Core/Utils/Info";
 import PostEditView from "./views/PostEdit.view";
 
-
 export default function App() {
 
     useEffect(() => {
-
         window.onunhandledrejection = function (error: PromiseRejectionEvent) {
             info({
                 title: error.reason.response?.data.title || 'Erro',

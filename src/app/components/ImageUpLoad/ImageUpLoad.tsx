@@ -3,9 +3,10 @@ import Icon from '@mdi/react'
 import { ChangeEvent, useState } from 'react'
 import Button from '../Button/Button'
 import * as IU from './ImageUpLoad.styles'
-import FileService from '../../../sdk/Services/File.service'
 import { useEffect } from 'react'
 import Loading from '../Loading/Loading'
+import { FileService }  from 'evertonss-sdk';
+
 
 
 export interface ImageUploadProps {
@@ -42,36 +43,6 @@ function ImageUpload(props: ImageUploadProps) {
   useEffect(() => {
     setFilePreview(props.preview)
   }, [props.preview])
-
-  //     const reader = new FileReader();
-
-        
-
-  //     // Defina a função de carregamento uma vez e remova-a apenas uma vez após o uso.
-  //     const handleLoad = async (event: ProgressEvent<FileReader>) => {
-  //        await setFilePreview(String(event.target?.result));
-        
-  //       const imageUrl = await FileService.upload(file)
-       
-  //       props.onImageUpload(imageUrl)
-       
-  //       // Remova o ouvinte de eventos após ser acionado uma vez.
-  //       await reader.removeEventListener('load', handleLoad);
-  //    }
-     
-
-  //     reader.addEventListener('load', handleLoad);
-     
-  //     reader.readAsDataURL(file);
-      
-  //   }
-  // }
-
-  // useEffect(()=>{
-
-  //   setFilePreview(props.preview)
-
-  // },[props.preview])
 
   if (filePreview)
     return <IU.ImagePreviewWrapper>
