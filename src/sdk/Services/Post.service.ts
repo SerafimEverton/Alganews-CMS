@@ -36,6 +36,17 @@ return this.Http
      .then(this.getData)   
     }
 
+    static deleteExistingPost(postId: number) {
+    return this.Http.delete<{}>(`/posts/${postId}`).then(
+      this.getData
+    );
+  }
+  static deactivateExistingPost(postId: number) {
+    return this.Http.delete<{}>(
+      `/posts/${postId}/activation`
+    ).then(this.getData);
+  }
+
 }
 
 export default PostService

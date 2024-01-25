@@ -3,13 +3,12 @@ import styled from "styled-components";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import FieldDescriptor from "../FieldDescriptor/fieldDescriptor";
 import ValueDescriptor from "../ValueDescriptor/ValueDescriptor";
-import { User } from "../../../sdk/@Types";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import UserService from "../../../sdk/Services/User.service";
-import getEditorDescription from "../../../sdk/UtilSDK/getEditorDescription";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { UserService, getEditorDescription } from "evertonss-sdk";
+import { User } from 'evertonss-sdk/dist/@Types'
 
 interface EditorProfileProps {
   hidePersonalData?: boolean;
