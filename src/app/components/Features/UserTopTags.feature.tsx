@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import CircleChart from "../CircleChart/CircleChart";
-import { Metric } from "../../../sdk/@Types";
 import { useState, useEffect } from 'react'
-import MetricService from "../../../sdk/Services/Metric.service";
 import withBoundary from "../../../Core/HOC/withBoundary";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { Metric } from "evertonss-sdk/dist/@Types";
+import { MetricService } from "evertonss-sdk";
 
 function UserTopTags(){
 

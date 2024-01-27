@@ -3,12 +3,12 @@ import withBoundary from "../../../Core/HOC/withBoundary"
 import MarkdownEditor from "../MarkdownEditor"
 import Button from "../Button/Button"
 import { useEffect, useState } from "react"
-import { Post } from "../../../sdk/@Types"
-import PostService from "../../../sdk/Services/Post.service"
 import Loading from "../Loading/Loading"
 import info from "../../../Core/Utils/Info"
 import confirm from "../../../Core/Utils/Confirm"
 import modal from "../../../Core/Utils/modal"
+import { Post } from "evertonss-sdk/dist/@Types"
+import { PostService } from "evertonss-sdk"
 
 interface PostPreviewProps {
   postId: number

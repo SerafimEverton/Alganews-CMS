@@ -3,8 +3,6 @@ import Icon from "@mdi/react"
 import { useEffect, useMemo, useState } from "react"
 import { Column, usePagination, useTable } from "react-table"
 import Table from "../Table/Table"
-import { Post } from "../../../sdk/@Types"
-import PostService from "../../../sdk/Services/Post.service"
 import { format } from "date-fns"
 import withBoundary from "../../../Core/HOC/withBoundary"
 import Skeleton from 'react-loading-skeleton'
@@ -13,6 +11,8 @@ import Loading from "../Loading/Loading"
 import modal from "../../../Core/Utils/modal"
 import PostPreview from "./PostPreview"
 import PostTitleAnchor from "../PostTitleAnchor"
+import { Post } from "evertonss-sdk/dist/@Types"
+import { PostService } from "evertonss-sdk"
 
 function PostList () {
 

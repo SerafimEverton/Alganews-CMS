@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import ValueDescriptor from "../ValueDescriptor/ValueDescriptor";
 import { useState, useEffect } from 'react'
-import { User } from "../../../sdk/@Types";
-import UserService from "../../../sdk/Services/User.service";
 import withBoundary from "../../../Core/HOC/withBoundary";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { User } from "evertonss-sdk/dist/@Types";
+import { UserService } from "evertonss-sdk";
 
 function UserEarnings(){
 

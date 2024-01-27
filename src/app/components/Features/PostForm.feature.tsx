@@ -8,10 +8,10 @@ import WordPriceCounter from "../WordPriceCounter/WordPriceCounter"
 import Button from "../Button/Button"
 import countWordsInMarkdown from "../../../Core/Utils/CountWordsInMarkdown"
 import info from "../../../Core/Utils/Info"
-import PostService from "../../../sdk/Services/Post.service"
 import ImageUpLoad from "../ImageUpLoad"
 import Loading from "../Loading/Loading"
 import { useNavigate } from "react-router-dom"
+import { PostService } from "evertonss-sdk"
 
 interface PostFormProps{
   postId?: number

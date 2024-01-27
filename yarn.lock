@@ -6123,10 +6123,10 @@ events@^3.2.0:
   resolved "https://registry.npmjs.org/events/-/events-3.3.0.tgz"
   integrity sha512-mQw+2fkQbALzQ7V0MY0IqdnXNOeTtP4r0lN9z7AAawCXgqea7bDii20AYrIBrFd/Hx0M2Ocz6S111CaFkUcb0Q==
 
-evertonss-sdk@3.5.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/evertonss-sdk/-/evertonss-sdk-3.5.0.tgz#74b948a594619645a2490cfe9110434e4f49d9d3"
-  integrity sha512-tJYVl+wIdj1op9xcUpFUV7D6/dPmdT2ppWJkHHgH8Suyvh8IcsE54Ta50N3HQ27MIvZKQ0rKR3JuJtrVBOxRIw==
+evertonss-sdk@3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/evertonss-sdk/-/evertonss-sdk-3.6.0.tgz#1836257db19d63793713890c2cdb8603e805cf54"
+  integrity sha512-THAaxD6lfgbtlNPtNs1boU0p3g5zwDvyDlD1AprkuNL5XQEG/KjHHf7y7qzRMmK7usDxEZGcgViQ3WgcQPLiYw==
   dependencies:
     axios "1.4.0"
     date-fns "2.30.0"

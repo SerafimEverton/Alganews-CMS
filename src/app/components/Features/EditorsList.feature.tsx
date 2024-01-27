@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import Profile from "../Profile/Profile";
 import { useEffect, useState } from "react";
-import { User } from "../../../sdk/@Types";
-import UserService from "../../../sdk/Services/User.service";
-import getEditorDescription from "../../../sdk/UtilSDK/getEditorDescription";
+import { User } from "evertonss-sdk/src/@Types/User";
+import { UserService, getEditorDescription } from "evertonss-sdk"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 

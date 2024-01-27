@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import Chart, { ChartProps } from "../Chart/Chart"
-import MetricService from "../../../sdk/Services/Metric.service"
 import transformEditorMonthlyEarningsIntoChartJs from "../../../Core/Utils/TransformEditorMonthlyEarningsIntoChartJs"
 import withBoundary from "../../../Core/HOC/withBoundary"
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { MetricService } from "evertonss-sdk"
 
 function UserPerformance () {
 
